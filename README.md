@@ -8,15 +8,24 @@
 
 <a name="highlights"></a>
 ## Highlights
-- 为了进行微调，请先将数据集准备成json文件并放在[./examples/industrial_data_pretraining/sense_voice](https://github.com/gusaiworld/FunASR/tree/main/examples/industrial_data_pretraining/sense_voice)文件夹下，具体准备过程请参考[readme](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/README_zh.md)
+- 为了进行微调，请先将数据集准备成json文件并放在[./examples/industrial_data_pretraining/sense_voice](https://github.com/gusaiworld/FunASR/tree/main/examples/industrial_data_pretraining/sense_voice)文件夹下，具体准备过程请参考[readme微调](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/README_zh.md)
+## 第一步，准备json文件，[python程序位于./funasr/datasets/audio_datasets/sensevoice2jsonl.py](https://github.com/gusaiworld/FunASR/blob/main/funasr/datasets/audio_datasets/sensevoice2jsonl.py) 可以参考以下命令 
+```python
+python sensevoice2jsonl.py \
+++scp_file_list='["/home/.../funasr/data/list/wav_tra.scp", "/home/.../funasr/data/list/text_tra.txt"]' \#需要输入数据集wav.scp(指明文件位置) txt(转录文本)
+++data_type_list='["source", "target"]' \
+++jsonl_file_out="/home/.../funasr/FunASR_sv/data/train.jsonl" \#输出目录
+++model_dir='/home/.../.cache/modelscope/hub/iic/SenseVoiceSmall'
 
+```
+## 执行微调[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)
 
-
-
-
--We have released a vast collection of academic and industrial pretrained models on the [ModelScope](https://www.modelscope.cn/models?page=1&tasks=auto-speech-recognition) and [huggingface](https://huggingface.co/FunASR), which can be accessed through our [Model Zoo](https://github.com/alibaba-damo-academy/FunASR/blob/main/docs/model_zoo/modelscope_models.md). The representative [Paraformer-large](https://www.modelscope.cn/models/damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch/summary), a non-autoregressive end-to-end speech recognition model, has the advantages of high accuracy, high efficiency, and convenient deployment, supporting the rapid construction of speech recognition services. For more details on service deployment, please refer to the [service deployment document](runtime/readme_cn.md). 
-
-
+```python
+需要改变
+Line 7 export CUDA_VISIBLE_DEVICES="0,1"
+L16    model_name_or_model_dir=
+L49    train_tool=  /funasr/bin/train_ds.py 项目中/bin/train_ds.py位置
+```
 <a name="whats-new"></a>
 ## What's new:
 - 2024/10/29: Real-time Transcription Service 1.12 released，The 2pass-offline mode supports the SensevoiceSmal model；([docs](runtime/readme.md));
