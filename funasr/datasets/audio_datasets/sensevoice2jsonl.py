@@ -65,6 +65,7 @@ def gen_jsonl_from_wav_text_list(
             rich_dict = {}
             for key in json_dict["source"].keys():
                 input_wav = json_dict["source"][key]["source"]
+                print(f'input_wav: {input_wav}')
                 res = model.generate(
                 input=input_wav,
                 cache={},
