@@ -8,7 +8,7 @@
 
 <a name="highlights"></a>
 ## Highlights
-- 只需执行[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)，其中包括以下几个阶段
+- 只需改变地址并执行[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)，其中包括以下几个阶段
 
 ## 从数据集生成wav.scp，[python程序位于./data/list/list_test.py](https://github.com/gusaiworld/FunASR/blob/main/data/list/list_test.py) 
 ```python
@@ -33,10 +33,7 @@ python sensevoice2jsonl.py \
 ## 执行微调[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)
 
 ```python
-需要改变
-Line 7 export CUDA_VISIBLE_DEVICES="0,1"
-L16    model_name_or_model_dir=
-L4    train_tool=  /funasr/bin/train_ds.py 项目中/bin/train_ds.py位置
+
 ```
 <a name="whats-new"></a>
 ## What's new:
