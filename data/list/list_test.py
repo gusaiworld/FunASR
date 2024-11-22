@@ -1,7 +1,12 @@
 import os
 import re
-
-
+import argparse
+parser = argparse.ArgumentParser(description='Generate wav.scp.')
+parser.add_argument('--tra_file', default='', help='训练集位置')
+parser.add_argument('--output_dir', default='',  help='输出wav.scp位置')
+parser.add_argument('--txt_tra', default='', help='对比txt以免有多余文件')
+parser.add_argument('--dev_file', default='',  help='dev')
+parser.add_argument('--txt_dev', default='',  help='dev txt')
 def find_difference(item, list2):
     difference = [False if item not in list2 else True]
     if not difference:
@@ -10,25 +15,21 @@ def find_difference(item, list2):
 
 def build_list(
         find_type='.rttm',  #生成list的文件类型
-
         base1_dir='/data/guyf/data_dir/record',  #寻找文件所在
         base2_dir='/home/guyf/DiariZen/recipes/diar_ssl/data/AMI_AliMeeting_AISHELL4/test/recording/wav.scp',
         bar_type='/',  #斜杠方向
-        cnt='tra',  #相对级数
+        txt_file='/data/guyf/funasr/FunASR_sv/data/list/text_tra.txt',  #相对级数
         type_1=True,  #TRUE：绝对路径    FALSE：想对路径
-        sensor=[0.000, 490.555]
+        rec_id='wav_tra',sensor=[0,1]#忽略
 ):
     rec_dir = find_type[1:]
     filedir = base1_dir
     i=0
     print(filedir)
-    expdir = base2_dir
+    expdir = os.path.join(base2_dir, rec_id + '.scp')
     pattern = r"\w+(?= )"
     d = []
-    if cnt == 'tra':
-        dir1 = '/data/guyf/funasr/FunASR_sv/data/list/text_tra.txt'
-    elif cnt == 'dev':
-        dir1 = '/data/guyf/funasr/FunASR_sv/data/list/text_dev.txt'
+    dir1=txt_file
     with open(dir1, 'r', encoding='utf-8') as f:
         wav_list = f.readlines()
     for i in range(len(wav_list)):
@@ -67,9 +68,7 @@ def build_list(
                                 stone.write(name[:-4]+'  '+root + bar_type + name + '\n')  #写路径
                             else :
                                 print(root + bar_type + name)
-                        else:  #相对路径
-                            stone.write(
-                                root.replace(filedir + bar_type, ('..' + bar_type) * cnt) + bar_type + name + '\n')
+
 
         wavs = []
 
@@ -84,13 +83,9 @@ def build_list(
 
 
 def main( ):
-
-    build_list(find_type='.wav',  base1_dir='/data/guyf/funasr/FunASR/examples/aishell/raw_data/data_aishell/wav/train',
-        base2_dir='/data/guyf/funasr/FunASR_sv/data/list/wav_tra.scp',cnt='tra',
-       )
-    build_list(find_type='.wav', base1_dir='/data/guyf/funasr/FunASR/examples/aishell/raw_data/data_aishell/wav/dev',
-               base2_dir='/data/guyf/funasr/FunASR_sv/data/list/wav_dev.scp',cnt='dev',
-               )
+    args = parser.parse_args()
+    build_list(find_type='.wav',  base1_dir=args.tra_file,base2_dir= args.output_dir,txt_file=args.txt_tra,rec_id='wav_tra')
+    build_list(find_type='.wav', base1_dir=args.dev_file, base2_dir=args.output_dir,txt_file=args.txt_dev,rec_id='wav_dev')
 
 
 if __name__ == '__main__':
