@@ -21,7 +21,9 @@ model_name_or_model_dir='/data/guyf/.cache/modelscope/hub/iic/SenseVoiceSmall'
 #mkdir -p ${local_path_root}/${model_name_or_model_dir}
 #git clone https://www.modelscope.cn/${model_name_or_model_dir}.git ${local_path_root}/${model_name_or_model_dir}
 #model_name_or_model_dir=${local_path_root}/${model_name_or_model_dir}
+
 wavscp_dir='/data/guyf/funasr/FunASR_sv/data/list'
+
 if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ]; then
   echo "stage 1: 生成wav.scp"
   python list_test.py \
@@ -46,6 +48,7 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
   ++jsonl_file_out=${workspace}/data/val_example.jsonl \
   ++model_dir='iic/SenseVoiceSmall'
 fi
+
 # data dir, which contains: train.json, val.json
 train_data=${workspace}/data/train_example.jsonl
 val_data=${workspace}/data/val_example.jsonl
