@@ -8,7 +8,7 @@
 
 <a name="highlights"></a>
 ## Highlights
-- 为了进行微调，请先将数据集准备成json文件并放在[./examples/industrial_data_pretraining/sense_voice](https://github.com/gusaiworld/FunASR/tree/main/examples/industrial_data_pretraining/sense_voice)文件夹下，具体准备过程请参考[readme微调](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/README_zh.md)
+- 为了进行微调，请先将数据集准备成json文件并放在[./examples/industrial_data_pretraining/sense_voice/data](https://github.com/gusaiworld/FunASR/tree/main/examples/industrial_data_pretraining/sense_voice/data)文件夹下，具体准备过程请参考[readme微调](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/README_zh.md)
 ## 第一步，准备json文件，[python程序位于./funasr/datasets/audio_datasets/sensevoice2jsonl.py](https://github.com/gusaiworld/FunASR/blob/main/funasr/datasets/audio_datasets/sensevoice2jsonl.py) 可以参考以下命令 
 ```python
 python sensevoice2jsonl.py \
