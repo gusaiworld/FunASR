@@ -37,13 +37,13 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
   python ../../../funasr/datasets/audio_datasets/sensevoice2jsonl.py \
   ++scp_file_list='["/data/guyf/funasr/FunASR_sv/data/list/wav_tra.scp", "/data/guyf/funasr/FunASR_sv/data/list/text_tra.txt"]' \
   ++data_type_list='["source", "target"]' \
-  ++jsonl_file_out="/data/guyf/funasr/FunASR_sv/data/tra_example.jsonl" \
+  ++jsonl_file_out=${workspace}/data/train_example.jsonl \
   ++model_dir='iic/SenseVoiceSmall'
 
   python ../../../funasr/datasets/audio_datasets/sensevoice2jsonl.py \
   ++scp_file_list='["/data/guyf/funasr/FunASR_sv/data/list/wav_dev.scp", "/data/guyf/funasr/FunASR_sv/data/list/text_dev.txt"]' \
   ++data_type_list='["source", "target"]' \
-  ++jsonl_file_out="/data/guyf/funasr/FunASR_sv/data/val_example.jsonl" \
+  ++jsonl_file_out=${workspace}/data/val_example.jsonl \
   ++model_dir='iic/SenseVoiceSmall'
 fi
 # data dir, which contains: train.json, val.json
