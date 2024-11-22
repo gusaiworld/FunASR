@@ -8,8 +8,14 @@
 
 <a name="highlights"></a>
 ## Highlights
-- 为了进行微调，请先将数据集准备成json文件并放在[./examples/industrial_data_pretraining/sense_voice/data](https://github.com/gusaiworld/FunASR/tree/main/examples/industrial_data_pretraining/sense_voice/data)文件夹下，具体准备过程请参考[readme微调](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/README_zh.md)
-## 第一步，准备json文件，[python程序位于./funasr/datasets/audio_datasets/sensevoice2jsonl.py](https://github.com/gusaiworld/FunASR/blob/main/funasr/datasets/audio_datasets/sensevoice2jsonl.py) 可以参考以下命令 
+- 只需改变地址并执行[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)，其中包括以下几个阶段
+
+## 从数据集生成wav.scp，[python程序位于./data/list/list_test.py](https://github.com/gusaiworld/FunASR/blob/main/data/list/list_test.py) 
+```python
+
+```
+
+## 准备json文件，[python程序位于./funasr/datasets/audio_datasets/sensevoice2jsonl.py](https://github.com/gusaiworld/FunASR/blob/main/funasr/datasets/audio_datasets/sensevoice2jsonl.py) 可以参考以下命令 
 ```python
 python sensevoice2jsonl.py \
 ++scp_file_list='["/home/.../funasr/data/list/wav_tra.scp", "/home/.../funasr/data/list/text_tra.txt"]' \#需要输入数据集wav.scp(指明文件位置) txt(转录文本)
@@ -17,14 +23,17 @@ python sensevoice2jsonl.py \
 ++jsonl_file_out="/home/.../funasr/FunASR_sv/data/train.jsonl" \#输出目录
 ++model_dir='/home/.../.cache/modelscope/hub/iic/SenseVoiceSmall'
 
+
+python sensevoice2jsonl.py \
+++scp_file_list='["/home/.../funasr/data/list/wav_dev.scp", "/home/.../funasr/data/list/text_dev.txt"]' \
+++data_type_list='["source", "target"]' \
+++jsonl_file_out="/home/.../funasr/FunASR_sv/data/val_example.jsonl" \
+++model_dir='/home/.../.cache/modelscope/hub/iic/SenseVoiceSmall'
 ```
 ## 执行微调[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)
 
 ```python
-需要改变
-Line 7 export CUDA_VISIBLE_DEVICES="0,1"
-L16    model_name_or_model_dir=
-L49    train_tool=  /funasr/bin/train_ds.py 项目中/bin/train_ds.py位置
+
 ```
 <a name="whats-new"></a>
 ## What's new:
