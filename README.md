@@ -34,7 +34,7 @@ python sensevoice2jsonl.py \
 ++model_dir='/home/.../.cache/modelscope/hub/iic/SenseVoiceSmall'
 ```
 ## 执行微调[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)
-
+在本地服务器上运行成功的log可以见[log](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/log.txt)
 ```python
 
 ```
