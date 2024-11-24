@@ -10,6 +10,9 @@
 ## Highlights
 - 只需改变地址并执行[finetune.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/industrial_data_pretraining/sense_voice/finetune.sh)，其中包括以下几个阶段
 
+## 下载数据集aishell。进入[run.sh](https://github.com/gusaiworld/FunASR/blob/main/examples/aishell/paraformer/run.sh)运行stage -1 stage 0即可
+
+
 ## 从数据集生成wav.scp，[python程序位于./data/list/list_test.py](https://github.com/gusaiworld/FunASR/blob/main/data/list/list_test.py) 
 ```python
 

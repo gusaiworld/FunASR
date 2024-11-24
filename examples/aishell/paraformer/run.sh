@@ -8,8 +8,8 @@ feats_dir="../DATA" #feature output dictionary
 exp_dir=`pwd`
 lang=zh
 token_type=char
-stage=0
-stop_stage=5
+stage=-1
+stop_stage=0
 
 # feature configuration
 nj=32
