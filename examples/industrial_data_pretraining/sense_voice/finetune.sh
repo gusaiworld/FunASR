@@ -3,7 +3,7 @@
 
 workspace=`pwd`
 stage=1
-stop_stage=1
+stop_stage=3
 # which gpu to train or finetune
 export CUDA_VISIBLE_DEVICES="0,1"
 gpu_num=$(echo $CUDA_VISIBLE_DEVICES | awk -F "," '{print NF}')
