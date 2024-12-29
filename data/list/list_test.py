@@ -64,7 +64,7 @@ def build_list(
                 for name in files:
                     if name.endswith(find_type):
                         if type_1:  #绝对路径
-                            if os.path.getsize(root + bar_type + name)> 1000 and find_difference(name[:-4],d):
+                            if os.path.getsize(root + bar_type + name)> 1000 and (name[:-4] in d):
                                 stone.write(name[:-4]+'  '+root + bar_type + name + '\n')  #写路径
                             else :
                                 print(root + bar_type + name)

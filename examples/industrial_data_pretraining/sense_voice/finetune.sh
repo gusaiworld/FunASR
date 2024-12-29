@@ -3,7 +3,7 @@
 
 workspace=`pwd`
 stage=1
-stop_stage=3
+stop_stage=1
 # which gpu to train or finetune
 export CUDA_VISIBLE_DEVICES="0,1"
 gpu_num=$(echo $CUDA_VISIBLE_DEVICES | awk -F "," '{print NF}')
@@ -14,6 +14,10 @@ gpu_num=$(echo $CUDA_VISIBLE_DEVICES | awk -F "," '{print NF}')
 
 #model_name_or_model_dir="iic/SenseVoiceSmall"
 dataset_path="/data/guyf/funasr/FunASR/examples/aishell/raw_data/data_aishell"
+#更改dataset_path为数据集所在位置
+
+
+
 model_name_or_model_dir="${workspace}/SenseVoiceSmall"
 
 ## option 2, download model by git
